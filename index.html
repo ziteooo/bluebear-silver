@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     <link rel="icon" href="./assets/logo.PNG">
 
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image.prod.js"></script>
@@ -32,12 +32,13 @@
     </button>
 
     <a-scene
-    mindar-image="imageTargetSrc: ./assets/target.mind;"
-    vr-mode-ui="enabled: false"
-    device-orientation-permission-ui="enabled: false"
-    renderer="colorManagement: true"
-    color-space="sRGB"
-    reflection="renderer: true">
+        mindar-image="imageTargetSrc: ./assets/target.mind;"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false"
+        renderer="colorManagement: true"
+        color-space="sRGB"
+        reflection="renderer: true"
+        loadingScreen="enabled: true">
 
     <!-- reflection="renderer: true is what helps with metalness-->
     <!-- renderer="logarithmicDepthBuffer: true" -->
@@ -46,9 +47,9 @@
 
         <a-assets>
 
-            <a-asset-item id="bear" src="./assets/BlueBear.glb?v=1"></a-asset-item>
+            <a-asset-item id="bear" src="./assets/BlueBear.glb"></a-asset-item>
 
-            <audio id="sound" src="./assets/song.mp3?v=1" preload="auto" loop type="audio/mpeg"></audio>
+            <audio id="sound" src="./assets/song.mp3" preload="auto" loop type="audio/mpeg"></audio>
 
             <!-- <a-cubemap id="driveway">
                 <img src="./assets/left.png">

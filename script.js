@@ -28,13 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    model.addEventListener('model-loaded', () => {
-        model.setAttribute('animation-mixer', {
-            clip: '*',
-            timeScale: 0,
-            startAt: 0,
-        })
-    })
+    // model.addEventListener('model-loaded', () => {
+    //     model.setAttribute('animation-mixer', {
+    //         clip: '*',
+    //         timeScale: 0,
+    //         startAt: 0,
+    //     })
+    // })
 
     // Detect target found
     target.addEventListener("targetFound", () => {
