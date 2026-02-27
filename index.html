@@ -11,15 +11,18 @@
     <link rel="icon" href="./assets/logo.PNG">
 
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image.prod.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image.aframe.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 
 
@@ -32,7 +35,7 @@
     </button>
 
     <a-scene
-    mindar-image="imageTargetSrc: ./assets/target.mind;"
+    mindar-image="imageTargetSrc: ./assets/target.mind; uiLoading: yes; uiScanning: yes; "
     vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false"
     renderer="colorManagement: true"
@@ -47,9 +50,9 @@
 
         <a-assets>
 
-            <a-asset-item id="bear" src="./assets/BlueBear.glb"></a-asset-item>
+            <a-asset-item id="bear" src="./assets/BlueBear.glb?v=1"></a-asset-item>
 
-            <audio id="sound" src="./assets/song.mp3" preload="auto" loop type="audio/mpeg"></audio>
+            <audio id="sound" src="./assets/song.mp3?v=1" preload="auto" loop muted type="audio/mpeg"></audio>
 
             <!-- <a-cubemap id="driveway">
                 <img src="./assets/left.png">
@@ -62,7 +65,7 @@
 
         <a-entity mindar-image-target="targetIndex: 0" id="target" sound="src: #sound" >
 
-            <a-gltf-model rotation="0 0 0" position="0 -0.5 0" scale="0.4 0.4 0.4" src="#bear" animation-mixer="loop: repeat" shadow="cast: true"></a-gltf-model>
+            <a-gltf-model rotation="0 0 0" position="0 -0.5 0" scale="0.4 0.4 0.4" src="#bear"  animation-mixer="loop: repeat, timeScale: 1" shadow="cast: true"></a-gltf-model>
 
         </a-entity>
 
@@ -78,7 +81,7 @@
                     position="2.5 4 1">
         </a-entity>
 
-        <a-entity gltf-model="#bear" foo></a-entity>
+        <a-entity gltf-model="#bear" visible-as-detected></a-entity>
 
 
     </a-scene>

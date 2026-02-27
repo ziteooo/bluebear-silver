@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector('a-scene').addEventListener('arReady', () => {
+        document.querySelector('a-scene').style.opacity= "1";
+    })
     // const sceneEl = document.querySelector('a-scene');
 
 	// let arSystem;
@@ -18,28 +21,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Toggle Icon classes
         if (audio.muted) {
-            icon.classList.remove('fa-volume-high');
-            icon.classList.add('fa-volume-xmark');
-        } else {
             icon.classList.remove('fa-volume-xmark');
             icon.classList.add('fa-volume-high');
+        } else {
+            icon.classList.remove('fa-volume-high');
+            icon.classList.add('fa-volume-xmark');
             // Force play
             // audio.play();
         }
     });
 
-    // model.addEventListener('model-loaded', () => {
-    //     model.setAttribute('animation-mixer', {
-    //         clip: '*',
-    //         timeScale: 0,
-    //         startAt: 0,
-    //     })
-    // })
+    model.addEventListener('model-loaded', () => {
+        model.setAttribute("visible", true)
+    })
 
     // Detect target found
     target.addEventListener("targetFound", () => {
         console.log("Target detected: Volume 1.");
         // arSystem.start();
+        // model.setAttribute("visible", true);
         audio.play();
         window.setTimeout(function() {
             audio.volume = 1;
@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Dectect target lost
     target.addEventListener("targetLost", () => {
         console.log("Target lost: Volume 0.");
+        // model.setAttribute("visible", false);
         audio.play();
         window.setTimeout(function() {
             audio.volume = 0;
@@ -73,5 +74,17 @@ document.addEventListener("DOMContentLoaded", () => {
     //     })
     //     })
     // }
+    // })
+
+    // AFRAME.registerComponent('visible-as-detected', {
+    //     init: function() {
+    //         this.el.addEventListener("targetFound", () => {
+    //             this.el.setAttribute('visible', true);
+    //         });
+    //         this.el.addEventListener("targetLost", () => {
+    //             this.el.setAttribute('visible', false)
+    //         })
+    //     }
+
     // })
 })
