@@ -1,19 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector('a-scene').addEventListener('arReady', () => {
-        document.querySelector('a-scene').style.opacity= "1";
-    })
+    // document.querySelector('a-scene').addEventListener('arReady', () => {
+    //     document.querySelector('a-scene').style.opacity= "1";
+    // })
     // const sceneEl = document.querySelector('a-scene');
 
 	// let arSystem;
 	// sceneEl.addEventListener('loaded', function () {
 	//   arSystem = sceneEl.systems["mindar-image-system"];
 	// });
-
+    const scene = document.querySelector('a-scene');
     const target = document.querySelector('#target');
     const audio = document.querySelector('#sound');
     const btn = document.querySelector('#audio-toggle');
     const icon = document.querySelector('#mute-icon');
     const model = document.querySelector('#bear')
+
+    scene.addEventListener('arReady', () => {
+        scene.style.opacity= "1"
+    })
 
 
     btn.addEventListener('click', () => {
@@ -76,15 +80,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // }
     // })
 
-    // AFRAME.registerComponent('visible-as-detected', {
-    //     init: function() {
-    //         this.el.addEventListener("targetFound", () => {
-    //             this.el.setAttribute('visible', true);
-    //         });
-    //         this.el.addEventListener("targetLost", () => {
-    //             this.el.setAttribute('visible', false)
-    //         })
-    //     }
+    AFRAME.registerComponent('visible-as-detected', {
+        init: function() {
+            this.el.object3D.setAttribute('visible', false);
 
-    // })
+            this.el.object3D.addEventListener("targetFound", () => {
+                this.el.object3D.setAttribute('visible', true);
+            });
+            this.el.object3D.addEventListener("targetLost", () => {
+                this.el.object3D.setAttribute('visible', false)
+            })
+        }
+
+    })
 })

@@ -14,7 +14,7 @@ button {
 .fa-volume-high, .fa-volume-xmark {
     position: relative;
     color: #7cafde ;
-    font-size: 5em;
+    font-size: 3em;
     /* text-shadow: 1px 1px  #3c84d4; */
     /* -webkit-text-stroke-color: #ffffff;
     -webkit-text-stroke-width: 1.5px; */
@@ -27,4 +27,14 @@ button {
     6.5px 6.5px 0 #3c84d4,
     7.5px 7.5px 0 #3c84d4;
 
+}
+
+/* #scene-container {
+    position: absolute;
+    opacity: 0;
+} */
+
+a-scene {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
 }
