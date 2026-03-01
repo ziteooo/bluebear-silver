@@ -38,5 +38,5 @@ button {
 
 a-scene {
     opacity: 0;
-    transition: opacity 0.5s ease-in;
+    transition: opacity 0.1s ease-in;
 }

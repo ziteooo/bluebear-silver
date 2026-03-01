@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const audio = document.querySelector('#sound');
     const btn = document.querySelector('#audio-toggle');
     const icon = document.querySelector('#mute-icon');
-    const model = document.querySelector('#bear')
+    // const model = document.querySelector('#bear')
 
     scene.addEventListener('arReady', () => {
         scene.style.opacity= "1"
@@ -35,9 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    model.addEventListener('model-loaded', () => {
-        model.setAttribute("visible", true)
-    })
+    // model.addEventListener('model-loaded', () => {
+    //     model.setAttribute("visible", true)
+    // })
 
     // Detect target found
     target.addEventListener("targetFound", () => {
@@ -83,12 +83,27 @@ document.addEventListener("DOMContentLoaded", () => {
     AFRAME.registerComponent('visible-as-detected', {
         init: function() {
             this.el.object3D.setAttribute('visible', false);
+            this.el.object3D.setAttribute("animation-mixer", {
+                timeScale: 0,
+            })
+
 
             this.el.object3D.addEventListener("targetFound", () => {
                 this.el.object3D.setAttribute('visible', true);
+                this.el.object3D.setAttribute("animation-mixer", {
+                clip: "*",
+                loop: repeat,
+                timeScale: 1,
+            })
+
+
             });
             this.el.object3D.addEventListener("targetLost", () => {
-                this.el.object3D.setAttribute('visible', false)
+                this.el.object3D.setAttribute('visible', false);
+                this.el.object3D.setAttribute("animation-mixer", {
+                timeScale: 0,
+            })
+
             })
         }
 
